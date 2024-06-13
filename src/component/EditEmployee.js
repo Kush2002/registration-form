@@ -46,7 +46,7 @@ const EditEmployee = () => {
       localStorage.setItem("Number", number);
       localStorage.setItem("Email", email);
       console.log(id,name,number,email);
-      history("/");
+      history("/employee");
   };
   
     return (
@@ -101,7 +101,7 @@ const EditEmployee = () => {
                                                 <button type="submit" className="btn btn-outline-primary me-2" onClick={(e) => handleSubmit(e)}>
                                                     Update
                                                 </button>
-                                                <Link to="/" className="btn btn-outline-danger">
+                                                <Link to="/employee" className="btn btn-outline-danger">
                                                     Cancel
                                                 </Link>
                                             </div>

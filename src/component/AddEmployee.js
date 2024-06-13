@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "../layout/NavBar";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../layout/Footer";
 import { v4 as uuid } from "uuid";
 import employeedata from "../employeeData";
 
@@ -19,7 +20,7 @@ const AddEmployee = () => {
             return;
         }
         employeedata.push({ id: uni, name: a, number: b, email: c });
-        history("/");
+        history("/employee");
     }
   return (
     <>
@@ -89,6 +90,7 @@ const AddEmployee = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

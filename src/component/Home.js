@@ -1,64 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../layout/NavBar";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Footer from "../layout/Footer";
+import { v4 as uuid } from "uuid";
 import employeedata from "../employeeData";
 
-const Home = () => { 
-  let history = useNavigate();
-  function setID(id, name, number, email) {
-  localStorage.setItem("id", id);
-  localStorage.setItem("Name", name);
-  localStorage.setItem("Number", number);
-  localStorage.setItem("Email", email);
-  // alert(id)
-  }
-  function deleted(id) {
-    let index = employeedata
-        .map(function (e) {
-            return e.id;
-        })
-        .indexOf(id);
-    employeedata.splice(index, 1);
-    history("/");
-}
+const Home = () => {
+    const [name, setName] = useState("");
+    const [number, setNumber] = useState("");
+    const [email, setEmail] = useState("");
+    let history = useNavigate();
+    const handelSubmit = (e) => {
+        e.preventDefault();
+        const ids = uuid(); // Creating unique id
+        let uni = ids.slice(0, 8); // Slicing unique id
+        let a = name, b = number, c = email;
+        if (name === "" || number === "" || email === "") {
+            alert("invalid input");
+            return;
+        }
+        employeedata.push({ id: uni, name: a, number: b, email: c });
+        history("/employee");
+    }
   return (
-  <>
-       <NavBar />
-  <div class="container table-responsive py-5 ">
-      <div className="d-flex justify-content-end">
-          <Link className="btn btn-secondary me-2 mb-3" to='/create' >Create</Link>
-      </div>
-      <table class="table table-bordered table-hover">
-      <thead class="thead-dark">
-      <tr>
-      <th scope="col">Sr. No</th>
-      <th scope="col">Name</th>
-      <th scope="col">Number</th>
-      <th scope="col">Email</th>
-      <th scope="col">Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      {employeedata.map((item, index) => {
-          return (
-              <>
-              <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>{item.name}</td>
-              <td>{item.number}</td>
-              <td>{item.email}</td>
-              <td>
-              <Link className="btn btn-warning me-2" to='/editEmployee' onClick={(e) => setID(item.id, item.name, item.number, item.email)}>
-                <i className="fa fa-pencil-square-o" aria-hidden="true"></i></Link>
-              <Link className="btn btn-danger" onClick={(e) => deleted(item.id)}>
-                <i class="fa fa-trash" aria-hidden="true"></i></Link></td>
-              </tr>
-              </>
-          );
-      })}
-      </tbody>
-  </table>
-  </div>
-  </>
-  );};
+    <>
+      <NavBar />
+      <section className="bg-light">
+        <div class="mask d-flex align-items-center h-50 gradient-custom-3">
+          <div class="container h-100 my-5">
+            <div class="row d-flex justify-content-center align-items-center h-80">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                  <div class="card-body p-5 ">
+                    <h2 class="text-uppercase text-center mb-5">Registration Form</h2>
+                    <form>
+                      <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example1cg">
+                          Enter Your Name
+                        </label>
+                        <input
+                          type="text"
+                          id="form3Example1cg"
+                          class="form-control form-control-lg"
+                          placeholder="Name"
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3cg">
+                          Enter Your Number
+                        </label>
+                        <input
+                          type="number"
+                          id="form3Example3cg"
+                          placeholder="91xxxxxx00"
+                          title="Error Message" pattern="[1-9]{1}[0-9]{9}"
+                          class="form-control form-control-lg"
+                          onChange={(e) => setNumber(e.target.value)}
+                        />
+                      </div>
+                      <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example4cg">
+                          Enter Your Email
+                        </label>
+                        <input
+                          type="email"
+                          id="form3Example4cg"
+                          placeholder="john@gmail.com"
+                          class="form-control form-control-lg"
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <button
+                          type="button"
+                          className="btn btn-outline-primary me-2"
+                          onClick={(e) => handelSubmit(e)}>
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer/>
+    </>
+  );
+};
+
 export default Home;
