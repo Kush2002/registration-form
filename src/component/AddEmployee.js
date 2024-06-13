@@ -14,7 +14,7 @@ const AddEmployee = () => {
         const ids = uuid(); // Creating unique id
         let uni = ids.slice(0, 8); // Slicing unique id
         let a = name, b = number, c = email;
-        if (name == "" || number == "" || email == "") {
+        if (name === "" || number === "" || email === "") {
             alert("invalid input");
             return;
         }
