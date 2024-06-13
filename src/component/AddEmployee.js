@@ -53,6 +53,7 @@ const AddEmployee = () => {
                           type="number"
                           id="form3Example3cg"
                           placeholder="91xxxxxx00"
+                          title="Error Message" pattern="[1-9]{1}[0-9]{9}"
                           class="form-control form-control-lg"
                           onChange={(e) => setNumber(e.target.value)}
                         />
