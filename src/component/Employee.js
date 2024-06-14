@@ -26,7 +26,8 @@ const Employee = () => {
     <>
       <NavBar />
       {/* <AddEmployee/> */}
-      <section className="bg-light">
+      <section className="bg-light" style={{background: '#E0EAFC' ,background:' -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC) ',
+      background: 'linear-gradient(to right, #CFDEF3, #E0EAFC)'}}>
       <div class="container table-responsive py-5" >
         <span className="d-flex justify-content-center mb-5">
           <h3 className="">Employee Details</h3>

@@ -10,13 +10,15 @@ const Home = () => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [checkPassword , setcheckPassword] = ({
+  //   name : ""
+  // })
   const [rePassword, setRePassword] = useState("");
-  let history = useNavigate();
+  var history = useNavigate();
   const handelSubmit = (e) => {
     e.preventDefault();
     const ids = uuid(); // Creating unique id
-    let uni = ids.slice(0, 8); // Slicing unique id
-    let a = name,
+    var a = name,
       b = number,
       c = email,
       d = password,
@@ -36,7 +38,7 @@ const Home = () => {
       return;
     }
     employeedata.push({
-      id: uni,
+      id: ids,
       name: a,
       number: b,
       email: c,
@@ -48,7 +50,8 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <section className="bg-light">
+      <section className="bg-light" style={{background: '#E0EAFC' ,background:' -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC) ',
+      background: 'linear-gradient(to right, #CFDEF3, #E0EAFC)'}}>
         <div className="mask d-flex align-items-center h-50 gradient-custom-3">
           <div className="container h-100 my-5">
             <div className="row d-flex justify-content-center align-items-center h-80">
@@ -125,20 +128,35 @@ const Home = () => {
                           type="password"
                           id="form4Example4cg"
                           placeholder="*********"
-                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                          title="Must contain at least one number and one uppercase and lowercase varter, and at least 8 or more characters"
                           className="form-control"
                           minLength={8}
                           maxLength={16}
                           onChange={(e) => setPassword(e.target.value)}
                           required
                         />
-                        <button id="toggle-password" type="button" class="d-none"
-    aria-label="Show password as plain text. Warning: this will display your password on the screen.">
-  </button>
+                        <button
+                          id="toggle-password"
+                          type="button"
+                          class="d-none"
+                          aria-label="Show password as plain text. Warning: this will display your password on the screen."
+                        ></button>
                         <div class="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">
                           Please Fill a 8 characters Password.
+                          <div id="message">
+                        <small>Password must contain the following:</small><br/>
+                        <small id="varter" class="invalid">
+                          A <b>lowercase</b> varter
+                        </small><br/>
+                        <small id="capital" class="invalid">
+                          A <b>capital (uppercase)</b> varter
+                        </small><br/>
+                        <small id="number" class="invalid">
+                          A <b>number</b>
+                        </small><br/>
+                      </div>
                         </div>
                       </div>
                       <div data-mdb-input-init className="form-outline mb-4">
@@ -148,10 +166,10 @@ const Home = () => {
                         <input
                           type="password"
                           id="form5Example4cg"
-                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                           minLength={8}
                           maxLength={16}
-                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                          title="Must contain at least one number and one uppercase and lowercase varter, and at least 8 or more characters"
                           placeholder="*********"
                           className="form-control"
                           required
@@ -162,6 +180,7 @@ const Home = () => {
                           Please Fill a 8 characters Re-Enter Password.
                         </div>
                       </div>
+
                       <div className="d-flex justify-content-center">
                         <button
                           type="submit"
@@ -179,7 +198,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </>
   );

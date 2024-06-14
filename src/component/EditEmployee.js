@@ -45,16 +45,11 @@ const EditEmployee = () => {
       localStorage.setItem("Name", name);
       localStorage.setItem("Number", number);
       localStorage.setItem("Email", email);
-      console.log(id,name,number,email);
+      console.log(id,name,number,email)
+    //   employeedata.push(updatedEmployee)
       history("/employee");
   };
-  const handleClear = () => {
-    
-    setName('');
-    setNumber('');
-    setEmail('');
-}
-  
+
     return (
         <div>
             <NavBar />
@@ -84,7 +79,7 @@ const EditEmployee = () => {
                                                     Enter Your Number
                                                 </label>
                                                 <input
-                                                    type="number"
+                                                    type="tel"
                                                     id="numberInput"
                                                     className="form-control form-control-lg"
                                                     value={number}
@@ -106,9 +101,6 @@ const EditEmployee = () => {
                                             <div className="d-flex justify-content-center">
                                                 <button type="submit" className="btn btn-outline-primary me-2" onClick={(e) => handleSubmit(e)}>
                                                     Update
-                                                </button>
-                                                <button type="submit" className="btn btn-outline-secondary me-2" onClick={() => handleClear()}>
-                                                    Clear
                                                 </button>
                                                 <Link to="/employee" className="btn btn-outline-danger">
                                                     Cancel

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-    <footer class="text-center bg-dark">
+    <footer class="text-center bg-dark" >
   <div class="container p-4 pb-0">
-    <section class="mb-3">
+    <section class="">
         <span className='me-2 text-white'><Link to='/' className='text-white' style={{ textDecoration: 'none' }}>Home</Link></span>
         <span className='me-2'><Link to='/employee' className='text-white' style={{ textDecoration: 'none' }}>Employee</Link></span>
         <span className='me-2'><Link to="/about" className='text-white' style={{ textDecoration: 'none' }}>About</Link></span>

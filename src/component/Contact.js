@@ -6,7 +6,8 @@ const Contact = () => {
   return (
     <div>
       <NavBar/>
-<section class="bg-light py-3 py-md-5">
+<section class="bg-light py-3 py-md-5" style={{background: '#E0EAFC' ,background:' -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC) ',
+      background: 'linear-gradient(to right, #CFDEF3, #E0EAFC)'}}>
   <div class="container">
     <div class="row justify-content-md-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
