@@ -37,7 +37,7 @@ const EditEmployee = () => {
       };
       for (let i = 0; i < employeedata.length; i++) {
           if (employeedata[i].id === id) {
-              employeedata.splice(i, 1, updatedEmployee);
+              employeedata.splice(i, 1, updatedEmployee);   
               break;
           }
       }
@@ -48,6 +48,12 @@ const EditEmployee = () => {
       console.log(id,name,number,email);
       history("/employee");
   };
+  const handleClear = () => {
+    
+    setName('');
+    setNumber('');
+    setEmail('');
+}
   
     return (
         <div>
@@ -100,6 +106,9 @@ const EditEmployee = () => {
                                             <div className="d-flex justify-content-center">
                                                 <button type="submit" className="btn btn-outline-primary me-2" onClick={(e) => handleSubmit(e)}>
                                                     Update
+                                                </button>
+                                                <button type="submit" className="btn btn-outline-secondary me-2" onClick={() => handleClear()}>
+                                                    Clear
                                                 </button>
                                                 <Link to="/employee" className="btn btn-outline-danger">
                                                     Cancel
