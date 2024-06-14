@@ -86,6 +86,8 @@ const Home = () => {
                           id="form3Example3cg"
                           placeholder="91xxxxxx00"
                           pattern="[0-9]{10}"
+                          maxLength={10}
+                          minLength={10}
                           title="enter a 10-digit phone number"
                           required
                           className="form-control"
@@ -104,7 +106,7 @@ const Home = () => {
                           type="email"
                           id="form3Example4cg"
                           placeholder="john@gmail.com"
-                          pattern="[a-z0-9._%+-]+@mycompany.com"
+                          pattern="[a-z0-9._%+-]+.@example\.com"
                           title="enter valid email"
                           required
                           className="form-control"
@@ -123,13 +125,20 @@ const Home = () => {
                           type="password"
                           id="form4Example4cg"
                           placeholder="*********"
+                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                           className="form-control"
+                          minLength={8}
+                          maxLength={16}
                           onChange={(e) => setPassword(e.target.value)}
                           required
                         />
+                        <button id="toggle-password" type="button" class="d-none"
+    aria-label="Show password as plain text. Warning: this will display your password on the screen.">
+  </button>
                         <div class="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">
-                          Please Fill a Password.
+                          Please Fill a 8 characters Password.
                         </div>
                       </div>
                       <div data-mdb-input-init className="form-outline mb-4">
@@ -139,6 +148,10 @@ const Home = () => {
                         <input
                           type="password"
                           id="form5Example4cg"
+                          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                          minLength={8}
+                          maxLength={16}
+                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                           placeholder="*********"
                           className="form-control"
                           required
@@ -146,7 +159,7 @@ const Home = () => {
                         />
                         <div class="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">
-                          Please Fill a Re-Enter Password.
+                          Please Fill a 8 characters Re-Enter Password.
                         </div>
                       </div>
                       <div className="d-flex justify-content-center">
@@ -166,6 +179,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
       <Footer />
     </>
   );
